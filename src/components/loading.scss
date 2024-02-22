@@ -1,0 +1,50 @@
+// 定义变量
+$primary-color: #3498db;
+$button-padding: 10px 20px;
+$button-border-radius: 5px;
+
+.loading {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 300px;
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+}
+
+// 按钮样式
+.button {
+  display: inline-block;
+  padding: $button-padding;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $button-border-radius;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.5;
+
+  // 混合（mixin）用于添加悬停效果
+  @include button-hover-effect;
+
+  // 继承（extend）用于创建一个带有不同背景色的按钮
+  &.success {
+    background-color: #2ecc71;
+  }
+
+  &.error {
+    background-color: #e74c3c;
+  }
+}
+
+// 混合（mixin）用于创建悬停效果
+@mixin button-hover-effect {
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
