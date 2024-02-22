@@ -2,10 +2,9 @@ import {View, Image} from '@tarojs/components'
 import './loading.scss'
 
 function Loading() {
-
   return (
     <View className='loading'>
-      <Image className='img'></Image>
+      <Image src={require('../resource/spiner.gif')} className='img' />
     </View>)
 }
 
