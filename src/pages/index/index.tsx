@@ -9,7 +9,7 @@ export default function Index() {
   })
 
   const gotoBlog = () => {
-    Taro.navigateTo({url: '/pages/blog/blog'})
+    Taro.navigateTo({url: '/pages/blog/blog?id=1111'})
   }
 
   return (
