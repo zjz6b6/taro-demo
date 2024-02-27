@@ -8,10 +8,6 @@ export default function Index() {
     console.log('Page loaded.')
   })
 
-  Taro.useError(() => {
-    Taro.showTabBar()
-  })
-
   const gotoBlog = () => {
     Taro.navigateTo({url: '/pages/blog/blog?id=1111'})
   }
