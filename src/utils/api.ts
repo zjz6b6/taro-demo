@@ -1,65 +1,34 @@
-const HOST_URI = 'https://www.v2ex.com/api/'
+// 技术分类GET：https://api.juejin.cn/tag_api/v1/query_category_briefs?aid=2608&uuid=7340513793933755940&spider=0
+// 作者榜GET：https://api.juejin.cn/user_api/v1/quality_user/rank?aid=2608&uuid=7340513793933755940&spider=0
+// 作者推荐GET：https://api.juejin.cn/user_api/v1/author/recommend?aid=2608&uuid=7340513793933755940&spider=0&category_id=&cursor=0&limit=20
+// 文章榜GET：https://api.juejin.cn/content_api/v1/content/article_rank?category_id=1&type=hot&count=50&from=0&aid=2608&uuid=7340513793933755940&spider=0
+// 推荐话题:
+//    POST：https://api.juejin.cn/tag_api/v1/theme/list_by_hot?aid=2608&uuid=7340513793933755940&spider=0
+//    {"cursor":"0","limit":10}
+// 文章列表:
+//    POST：https://api.juejin.cn/recommend_api/v1/article/recommend_all_feed?aid=2608&uuid=7340513793933755940&spider=0
+//    {"id_type":2,"client_type":2608,"sort_type":200,"cursor":"0","limit":20}
+// 文章详情：https://juejin.cn/post/7290751877734776893
 
-// 获取节点
-// 所有的节点
-const ALL_NODE = 'nodes/all.json'
-// 获取节点信息
-// 节点id :id 节点名 :name
-const NODE_INFO = 'nodes/show.json'
+export const LATEST_DATA_URL = 'https://api.juejin.cn/recommend_api/v1/article/recommend_all_feed'
+export const HOT_DATA_URL = 'https://api.juejin.cn/tag_api/v1/theme/list_by_hot'
 
-// 获取主题
 // 取最新的主题
-const LATEST_TOPIC = 'topics/latest.json'
+export function getLatestDateUrl(): string {
+  return LATEST_DATA_URL;
+}
+
 // 获取热议主题
-const HOT_TOPIC = 'topics/hot.json'
-// 获取主题信息  :id | (:username | :node_id | :node_name)
-const GET_TOPICS = 'topics/show.json'
-
-// 获取回复 :topic_id (:page , :page_size)?
-const GET_REPLIES = 'replies/show.json'
-
-// 获取用户信息
-// const GET_USERINFO = 'members/show.json'
-
-function queryString (obj?: Object) {
-  if (!obj) {
-    return ''
-  }
-  return '?' + Object.keys(obj).map(function (k) {
-    return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])
-  }).join('&')
+export function getHotDateUrl(): string {
+  return HOT_DATA_URL;
 }
 
-function getAllNode () {
-  return HOST_URI + ALL_NODE
-}
+// function queryString (obj?: Object) {
+//   if (!obj) {
+//     return ''
+//   }
+//   return '?' + Object.keys(obj).map(function (k) {
+//     return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])
+//   }).join('&')
+// }
 
-function getNodeInfo (o?) {
-  return HOST_URI + NODE_INFO + queryString(o)
-}
-
-function getHotNodes () {
-  return HOST_URI + HOT_TOPIC
-}
-
-function getLatestTopic (o?) {
-  return HOST_URI + LATEST_TOPIC + queryString(o)
-}
-
-function getReplies (o?) {
-  return HOST_URI + GET_REPLIES + queryString(o)
-}
-
-function getTopics (o?) {
-  return HOST_URI + GET_TOPICS + queryString(o)
-}
-
-export default {
-  getAllNode,
-  getNodeInfo,
-  getLatestTopic,
-  getReplies,
-  getHotNodes,
-  queryString,
-  getTopics
-}

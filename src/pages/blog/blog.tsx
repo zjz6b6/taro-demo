@@ -31,6 +31,8 @@
  * - 定义store（状态）
  * - 定义对应service，处理store
  * - 定义page，使用store渲染等
+ *
+ * Preact 替换 react
  */
 import {View, Text, Button} from '@tarojs/components'
 import { useRouter } from "@tarojs/taro"

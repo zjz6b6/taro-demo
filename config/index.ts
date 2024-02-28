@@ -1,10 +1,10 @@
-import { defineConfig, type UserConfigExport } from '@tarojs/cli'
+import {defineConfig, type UserConfigExport} from '@tarojs/cli'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 import devConfig from './dev'
 import prodConfig from './prod'
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
-export default defineConfig(async (merge, { command, mode }) => {
+export default defineConfig(async (merge, {command, mode}) => {
   const baseConfig: UserConfigExport = {
     projectName: 'taro-demo',
     date: '2024-2-20',
@@ -18,13 +18,10 @@ export default defineConfig(async (merge, { command, mode }) => {
     sourceRoot: 'src',
     outputRoot: `dist/${process.env.TARO_ENV}`,
     plugins: [],
-    defineConstants: {
-    },
+    defineConstants: {},
     copy: {
-      patterns: [
-      ],
-      options: {
-      }
+      patterns: [],
+      options: {}
     },
     framework: 'react',
     compiler: 'webpack5',
@@ -35,9 +32,7 @@ export default defineConfig(async (merge, { command, mode }) => {
       postcss: {
         pxtransform: {
           enable: true,
-          config: {
-
-          }
+          config: {}
         },
         url: {
           enable: true,
@@ -58,7 +53,10 @@ export default defineConfig(async (merge, { command, mode }) => {
       }
     },
     h5: {
-      devServer: { port: 8080, host: 'localhost' },
+      devServer: {
+        port: 8080,
+        host: 'localhost'
+      },
       publicPath: '/',
       staticDirectory: 'static',
       output: {
