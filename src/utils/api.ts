@@ -10,8 +10,13 @@
 //    {"id_type":2,"client_type":2608,"sort_type":200,"cursor":"0","limit":20}
 // 文章详情：https://juejin.cn/post/7290751877734776893
 
-export const LATEST_DATA_URL = 'https://api.juejin.cn/recommend_api/v1/article/recommend_all_feed'
-export const HOT_DATA_URL = 'https://api.juejin.cn/tag_api/v1/theme/list_by_hot'
+let HOST = 'https://api.juejin.cn'
+// if (process.env.TARO_ENV === 'h5') {
+//   HOST = '/mock'
+// }
+
+export const LATEST_DATA_URL = HOST + '/recommend_api/v1/article/recommend_all_feed'
+export const HOT_DATA_URL = HOST + '/tag_api/v1/theme/list_by_hot'
 
 // 取最新的主题
 export function getLatestDateUrl(): string {

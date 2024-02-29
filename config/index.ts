@@ -53,10 +53,6 @@ export default defineConfig(async (merge, {command, mode}) => {
       }
     },
     h5: {
-      devServer: {
-        port: 8080,
-        host: 'localhost'
-      },
       publicPath: '/',
       staticDirectory: 'static',
       output: {
